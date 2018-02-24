@@ -8,7 +8,7 @@ The zero-valued `logging.Logging` struct functions as a no-op logger that does n
 package mypackage
 
 import (
-    "github.com/qmsk/snmpbot/util/logging"
+    "github.com/qmsk/go-logging"
 )
 
 var log logging.Logging
@@ -22,7 +22,7 @@ func SetLogging(l logging.Logging) {
 
 ```go
 import (
-    "github.com/qmsk/snmpbot/util/logging"
+    "github.com/qmsk/go-logging"
     "flag"
     ".../mypackage"
 )
