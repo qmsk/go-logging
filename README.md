@@ -5,7 +5,7 @@ The zero-valued `logging.Logging` struct functions as a no-op logger that does n
 ### `mypackage/logging.go`
 
 ```go
-package client
+package mypackage
 
 import (
     "github.com/qmsk/snmpbot/util/logging"
@@ -15,5 +15,29 @@ var log logging.Logging
 
 func SetLogging(l logging.Logging) {
     log = l
+}
+```
+
+### `cmd/mycmd/main.go`
+
+```go
+import (
+    "github.com/qmsk/snmpbot/util/logging"
+    "flag"
+    ".../mypackage"
+)
+
+var LoggingOptions logging.Options
+
+func init() {
+  LoggingOptions.InitFlags()
+}
+
+func main() {
+  flag.Parse()
+
+  mypackage.SetLogging(LoggingOptions.MakeLogging())
+
+  ...
 }
 ```
